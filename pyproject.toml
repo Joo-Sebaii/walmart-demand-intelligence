@@ -1,0 +1,50 @@
+[project]
+name = "walmart-demand-intelligence"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Youssef Mohamed Mahmoud",email = "ym202302010@gaf.ac"}
+]
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "pyyaml (>=6.0.3,<7.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.17.6,<0.18.0)",
+    "pytest (>=9.2.0,<10.0.0)",
+    "pre-commit (>=4.7.0,<5.0.0)",
+    "black (>=26.10.1,<27.0.0)"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+
+[tool.poetry]
+packages = [
+    { include = "walmart_demand", from = "src" }
+]
